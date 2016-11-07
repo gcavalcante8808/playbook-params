@@ -3,8 +3,17 @@
    git: repo="{{ repo_url }}" dest="{{ target_dir }}" accept_hostkey=yes
    become: yes
 
+ - name: Verify if Userparameter file exists
+   stat: path="{{ target_dir }}/{{ userparam_file }}"
+   register: userparam
+
+ - name: Remove UserParam if its not a Symlink
+   file: path="{{ target_dir }}/{{ userparam_file }}"
+   become: yes
+   when: userparam.islnk == False
+
  - name: Link Userparameter file into Zabbix Agent
-   file: path={{ target_dir }}/{{ userparam_file }} dest=/etc/zabbix/zabbix.agentd.conf.d/{{ userparam_file }} state=link
+   file: src="{{ target_dir }}/{{ userparam_file }}" dest=/etc/zabbix/zabbix.agentd.conf.d/{{ userparam_file }} state=link
    become: yes
 
  - name: Restart Zabbix Agent
