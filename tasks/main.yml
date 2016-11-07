@@ -8,12 +8,12 @@
    register: userparam
 
  - name: Remove UserParam if its not a Symlink
-   file: path="{{ target_dir }}/{{ userparam_file }}"
+   file: path="/etc/zabbix/zabbix_agentd.conf.d/{{ userparam_file }}" state=absent
    become: yes
    when: userparam.stat.islnk == False
 
  - name: Link Userparameter file into Zabbix Agent
-   file: src="{{ target_dir }}/{{ userparam_file }}" dest=/etc/zabbix/zabbix.agentd.conf.d/{{ userparam_file }} state=link
+   file: src="{{ target_dir }}/{{ userparam_file }}" dest=/etc/zabbix/zabbix_agentd.conf.d/{{ userparam_file }} state=link
    become: yes
 
  - name: Restart Zabbix Agent
