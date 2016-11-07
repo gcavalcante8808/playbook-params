@@ -1,0 +1,8 @@
+---
+ - hosts: "{{ hosts }}"
+   vars:
+    - repo_url: "{{ repo }}"
+    - target_dir: "{{ dir }}"
+    - userparam_file: "{{ paramfile }}"
+   tasks:
+    - include: tasks/main.yml

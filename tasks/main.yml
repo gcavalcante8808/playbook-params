@@ -1,0 +1,12 @@
+---
+ - name: Download Userparameter Files
+   git: repo="{{ repo_url }}" dest="{{ target_dir }}"
+   become: yes
+
+ - name: Link Userparameter file into Zabbix Agent
+   file: path={{ target_dir }}/{{ userparam_file }} dest=/etc/zabbix/zabbix.agentd.conf.d/{{ userparam_file }} state=link
+   become: yes
+
+ - name: Restart Zabbix Agent
+   service: name=zabbix-agent state=restarted
+   become: yes
