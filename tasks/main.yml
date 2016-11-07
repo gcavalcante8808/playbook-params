@@ -1,6 +1,6 @@
 ---
  - name: Download Userparameter Files
-   git: repo="{{ repo_url }}" dest="{{ target_dir }}"
+   git: repo="{{ repo_url }}" dest="{{ target_dir }}" accept_hostkey=yes
    become: yes
 
  - name: Link Userparameter file into Zabbix Agent
