@@ -51,7 +51,7 @@ Another notes about this playbook:
 
  * The playbook was tested with ansible core(cli) and Semaphore;
  * Pay Attention to the target dir for userparams that relies on scripts to extract data (the path problem can be tricky to debug on zabbix-agent);
-
+ * ** THE PLAYBOOK REMOVES A FILE WITH SAME NAME OF <userparam_file> IF IT IS PRESENT ON THE /etc/zabbix/zabbix_agentd.conf.d/ AND PUT A SYMLINK IN PLACE. **;
 Author
 ------
 
