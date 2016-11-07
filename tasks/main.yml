@@ -10,7 +10,7 @@
  - name: Remove UserParam if its not a Symlink
    file: path="{{ target_dir }}/{{ userparam_file }}"
    become: yes
-   when: userparam.islnk == False
+   when: userparam.stat.islnk == False
 
  - name: Link Userparameter file into Zabbix Agent
    file: src="{{ target_dir }}/{{ userparam_file }}" dest=/etc/zabbix/zabbix.agentd.conf.d/{{ userparam_file }} state=link
