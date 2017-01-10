@@ -1,8 +1,9 @@
 ---
  - hosts: "{{ hosts }}"
    vars:
-    - repo_url: "{{ repo }}"
-    - target_dir: "{{ dir }}"
-    - userparam_file: "{{ paramfile }}"
+    - repo_url: "{{ repo_url }}"
+    - target_dir: "{{ target_dir }}"
+    - userparam_file: "{{ userparam_file }}"
+    - agentd_path: "{{ agentd_path }}"
    tasks:
     - include: tasks/main.yml
