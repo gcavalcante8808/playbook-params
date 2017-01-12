@@ -17,5 +17,5 @@
    become: yes
 
  - name: Restart Zabbix Agent
-   service: name=zabbix-agent state=restarted
+   service: name="{{ agentd_service }}" state=restarted
    become: yes
